@@ -1,0 +1,11 @@
+import{c as s,f as d,j as e,X as a}from"./index-CDB9h_ti.js";import{C as x}from"./circle-check-big-BUZjaFYk.js";/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const m=[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["path",{d:"M12 16v-4",key:"1dtifu"}],["path",{d:"M12 8h.01",key:"e9boi3"}]],h=s("info",m);/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const u=[["path",{d:"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",key:"wmoenq"}],["path",{d:"M12 9v4",key:"juzpu7"}],["path",{d:"M12 17h.01",key:"p32p05"}]],b=s("triangle-alert",u),p=({type:c="info",message:n,onClose:r,className:t=""})=>{const l={success:{icon:x,colors:"bg-green-50 text-green-800 border-green-200",iconColor:"text-green-400",closeColor:"text-green-500 hover:bg-green-100"},error:{icon:d,colors:"bg-red-50 text-red-800 border-red-200",iconColor:"text-red-400",closeColor:"text-red-500 hover:bg-red-100"},warning:{icon:b,colors:"bg-yellow-50 text-yellow-800 border-yellow-200",iconColor:"text-yellow-400",closeColor:"text-yellow-500 hover:bg-yellow-100"},info:{icon:h,colors:"bg-blue-50 text-blue-800 border-blue-200",iconColor:"text-blue-400",closeColor:"text-blue-500 hover:bg-blue-100"}},o=l[c]||l.info,i=o.icon;return e.jsx("div",{className:`rounded-md border p-4 ${o.colors} ${t}`,children:e.jsxs("div",{className:"flex",children:[e.jsx("div",{className:"flex-shrink-0",children:e.jsx(i,{className:`h-5 w-5 ${o.iconColor}`,"aria-hidden":"true"})}),e.jsx("div",{className:"ml-3 flex-1 md:flex md:justify-between",children:e.jsx("p",{className:"text-sm",children:n})}),r&&e.jsx("div",{className:"ml-auto pl-3",children:e.jsx("div",{className:"-mx-1.5 -my-1.5",children:e.jsxs("button",{type:"button",onClick:r,className:`inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${o.closeColor}`,children:[e.jsx("span",{className:"sr-only",children:"Dismiss"}),e.jsx(a,{className:"h-5 w-5","aria-hidden":"true"})]})})})]})})};export{p as A};
