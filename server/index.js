@@ -70,9 +70,13 @@ async function startServer() {
   if (process.env.NODE_ENV === 'production') {
     const clientDist = path.resolve(__dirname, '../client/dist');
     app.use(express.static(clientDist));
-    
-    // Changed '*' to '/*splat' for Express 5 / path-to-regexp compatibility
-    app.get('/*splat', (req, res) => {
+
+    // Fallback handler for SPA client routing (immune to path-to-regexp wildcard syntax errors)
+    app.use((req, res, next) => {
+      // Don't intercept API requests that fell through
+      if (req.path.startsWith('/api')) {
+        return next();
+      }
       res.sendFile(path.resolve(clientDist, 'index.html'));
     });
   }
