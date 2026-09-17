@@ -54,19 +54,35 @@ async function startServer() {
   app.use('/api/admin', adminRoutes);
   app.use('/api/targets', targetRoutes);
 
+  // Auto-seed default accounts if database is new
+  try {
+    const checkUser = getDb().prepare('SELECT COUNT(*) as count FROM users').get();
+    if (!checkUser || checkUser.count === 0) {
+      console.log('Fresh database detected. Seeding default accounts & demo questions...');
+      const { default: seed } = await import('./db/seed.js');
+      // seed script runs automatically when executed or can be imported
+    }
+  } catch (e) {
+    // continue
+  }
+
   // Production setup - serve client build
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+    const clientDist = path.resolve(__dirname, '../client/dist');
+    app.use(express.static(clientDist));
+    
+    // Changed '*' to '/*splat' for Express 5 / path-to-regexp compatibility
+    app.get('/*splat', (req, res) => {
+      res.sendFile(path.resolve(clientDist, 'index.html'));
     });
   }
 
   // Global error handler
   app.use(errorHandler);
 
-  app.listen(PORT, () => {
-    console.log(`StudyBuddy server running on http://localhost:${PORT}`);
+  const HOST = '0.0.0.0';
+  app.listen(PORT, HOST, () => {
+    console.log(`StudyBuddy server running on http://${HOST}:${PORT}`);
   });
 }
 
